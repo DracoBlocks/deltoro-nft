@@ -32,7 +32,6 @@ async function initialiseToken(options?: Options): Promise<EstrellaNFT> {
     options.setFinishInTheFuture
       ? (await timeUtils.getTimestamp()).toNumber() + 3600
       : config.nftSaleFinish,
-    config.nftBaseUri,
     vrfCoordinatorAddress,
     linkAddress,
     "0xAA77729D3466CA35AE8D28B3BBAC7CC36A5031EFDC430821C02BC31A238AF445"

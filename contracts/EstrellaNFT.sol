@@ -27,7 +27,6 @@ contract EstrellaNFT is
 
   constructor(
     uint256 _saleFinishTime,
-    string memory nftBaseURI,
     address vrfCoordinator,
     address linkToken,
     bytes32 keyHash
@@ -36,7 +35,7 @@ contract EstrellaNFT is
     RandomGenerator(vrfCoordinator, linkToken, keyHash)
   {
     saleFinishTime = _saleFinishTime;
-    baseURI = nftBaseURI;
+    baseURI = "ipfs://";
 
     mintOriginalNFT();
   }
@@ -106,16 +105,7 @@ contract EstrellaNFT is
     require(_exists(tokenId), "EstrellaNFT: URI query for nonexistent token");
 
     NFTProperties memory properties = tokenProperties[tokenId];
-    string memory _tokenURI = string(
-      abi.encodePacked(
-        properties.color1,
-        "-",
-        properties.color2,
-        "-",
-        properties.color3,
-        ".png"
-      )
-    );
+    string memory _tokenURI = properties.cid;
     string memory base = _baseURI();
 
     // If there is no base URI, return the token URI.
