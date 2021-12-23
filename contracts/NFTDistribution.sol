@@ -6,12 +6,12 @@ struct NFTProperties {
   string color1;
   string color2;
   string color3;
-  uint16 rarity;
+  uint256 rarity;
 }
 
 abstract contract NFTDistribution {
   NFTProperties[] private distribution;
-  uint16 private constant MAX_ENTRIES = 1000; //The sum of all rarities
+  uint256 private constant MAX_ENTRIES = 1; //1000; //The sum of all rarities
 
   NFTProperties public ORIGINAL = NFTProperties("oro", "plata", "bronce", 0);
 
@@ -46,9 +46,9 @@ abstract contract NFTDistribution {
     view
     returns (NFTProperties memory)
   {
-    uint16 entry = uint16(randomness % MAX_ENTRIES) + 1;
-    uint16 proccessedEntries;
-    for (uint16 i = 0; i < distribution.length; i++) {
+    uint256 entry = (randomness % MAX_ENTRIES) + 1;
+    uint256 proccessedEntries;
+    for (uint256 i = 0; i < distribution.length; i++) {
       proccessedEntries += distribution[i].rarity;
       if (proccessedEntries >= entry) {
         return distribution[i];

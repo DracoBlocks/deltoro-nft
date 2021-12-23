@@ -3,7 +3,6 @@ pragma solidity ^0.8.4;
 // SPDX-License-Identifier: MIT
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "./RandomGenerator.sol";
@@ -16,8 +15,7 @@ contract EstrellaNFT is
   Ownable
 {
   using Strings for uint256;
-  using Counters for Counters.Counter;
-  Counters.Counter private _tokenIds;
+  uint256 public lastTokenId;
 
   uint256 public constant NFT_PRICE = 10 * 10**18; //10 MATIC
 
@@ -45,9 +43,7 @@ contract EstrellaNFT is
   }
 
   function mintOriginalNFT() private {
-    _tokenIds.increment();
-
-    uint256 newItemId = _tokenIds.current();
+    uint256 newItemId = ++lastTokenId;
     _mint(address(this), newItemId);
     tokenProperties[newItemId] = NFTDistribution.ORIGINAL;
   }
@@ -63,7 +59,7 @@ contract EstrellaNFT is
   }
 
   function originalGiveaway(uint256 randomness) internal override {
-    uint256 winningToken = (randomness % _tokenIds.current()) + 1;
+    uint256 winningToken = (randomness % lastTokenId) + 1;
 
     //Transfer original NFT (id = 1)
     transferFrom(address(this), ownerOf(winningToken), 1);
@@ -83,11 +79,10 @@ contract EstrellaNFT is
       msg.value >= amount * NFT_PRICE || _msgSender() == owner(),
       "Not enough MATIC sent to purchase the NFTs"
     );
+    require(~uint256(0) - amount > lastTokenId, "NFT minting limit reached");
 
     for (uint256 i = 0; i < amount; i++) {
-      _tokenIds.increment();
-
-      uint256 newItemId = _tokenIds.current();
+      uint256 newItemId = ++lastTokenId;
       _mint(recipient, newItemId);
 
       super.requestReveal(newItemId);
