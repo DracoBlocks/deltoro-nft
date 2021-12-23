@@ -74,6 +74,10 @@ contract EstrellaNFT is RandomGenerator, NFTDistribution, ERC721, Ownable {
       msg.value >= amount * NFT_PRICE || _msgSender() == owner(),
       "Not enough MATIC sent to purchase the NFTs"
     );
+    require(
+      amount <= 1000,
+      "Cannot mint more than 1000 tokens in one transaction"
+    );
 
     for (uint256 i = 0; i < amount; i++) {
       uint256 newItemId = ++lastTokenId;

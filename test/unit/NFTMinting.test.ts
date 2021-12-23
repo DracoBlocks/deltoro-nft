@@ -5,12 +5,9 @@ import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
 import { EstrellaNFT } from "../../typechain";
 import { advanceToFuture } from "../fixtures/BlockchainUtils";
-import {
-  ChainlinkContractFactory,
-  ChainlinkContracts,
-} from "../fixtures/chainlink/ChainlinkContracts";
 import { processReveal } from "../fixtures/RequestReveal";
 import { initialiseToken } from "../fixtures/TokenInitialisation";
+import { slowDescribe } from "../SlowTest";
 
 chai.use(solidity);
 
@@ -18,13 +15,11 @@ describe("NFT Minting", () => {
   describe("when minting an NFT", () => {
     let contract: EstrellaNFT;
     let owner: SignerWithAddress, investor: SignerWithAddress;
-    let chainlinkContracts: ChainlinkContracts;
     let nftPrice: BigNumber;
 
     beforeEach(async () => {
       [owner, investor] = await ethers.getSigners();
       contract = await initialiseToken();
-      chainlinkContracts = await ChainlinkContractFactory.get();
       nftPrice = await contract.NFT_PRICE();
     });
 
@@ -113,9 +108,31 @@ describe("NFT Minting", () => {
 
       advanceToFuture(time.toNumber());
 
-      expect(contract.mint(investor.address, 1)).to.be.revertedWith(
+      await expect(contract.mint(investor.address, 1)).to.be.revertedWith(
         "NFT Sale has finished"
       );
+    });
+
+    it("then a user cannot mint more than 1000 NFTs in one go", async () => {
+      await expect(contract.mint(investor.address, 1001)).to.be.revertedWith(
+        "Cannot mint more than 1000 tokens in one transaction"
+      );
+    });
+  });
+
+  slowDescribe("when minting an NFT to absurd limits", () => {
+    let contract: EstrellaNFT;
+    let owner: SignerWithAddress, investor: SignerWithAddress;
+    let nftPrice: BigNumber;
+
+    beforeEach(async () => {
+      [owner, investor] = await ethers.getSigners();
+      contract = await initialiseToken();
+      nftPrice = await contract.NFT_PRICE();
+    });
+
+    it("then a user can mint the limit NFTs in one go", async () => {
+      await expect(contract.mint(investor.address, 1000)).to.not.be.reverted;
     });
   });
 });

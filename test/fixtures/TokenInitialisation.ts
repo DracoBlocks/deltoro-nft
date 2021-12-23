@@ -1,14 +1,18 @@
 import { ethers } from "hardhat";
-import { EstrellaNFT, EstrellaNFT__factory } from "../../typechain";
+import {
+  EstrellaNFT,
+  EstrellaNFT__factory,
+  TimeUtils__factory,
+} from "../../typechain";
 import { ChainlinkContractFactory } from "./chainlink/ChainlinkContracts";
 import config from "../../src/config";
 
 interface Options {
-  nftSaleFinish?: number;
+  setFinishInTheFuture: boolean;
 }
 
 const DEFAULT_OPTIONS: Options = {
-  nftSaleFinish: config.nftSaleFinish,
+  setFinishInTheFuture: true,
 };
 
 function getAddresses() {
@@ -18,13 +22,16 @@ function getAddresses() {
 async function initialiseToken(options?: Options): Promise<EstrellaNFT> {
   options = { ...DEFAULT_OPTIONS, ...options };
 
+  const [owner] = await getAddresses();
   const chainlinkContracts = await ChainlinkContractFactory.get();
+  const timeUtils = await new TimeUtils__factory(owner).deploy();
   const linkAddress = chainlinkContracts.LINK.address;
   const vrfCoordinatorAddress = chainlinkContracts.vrfCoordinator.address;
 
-  const [owner] = await getAddresses();
   const token = await new EstrellaNFT__factory(owner).deploy(
-    options.nftSaleFinish!,
+    options.setFinishInTheFuture
+      ? (await timeUtils.getTimestamp()).toNumber() + 3600
+      : config.nftSaleFinish,
     config.nftBaseUri,
     vrfCoordinatorAddress,
     linkAddress,

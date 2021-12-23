@@ -27,10 +27,7 @@ describe("Original giveaway", () => {
 
     beforeEach(async () => {
       [owner, investor] = await ethers.getSigners();
-      timeUtils = await new TimeUtils__factory(owner).deploy();
-      contract = await initialiseToken({
-        nftSaleFinish: (await timeUtils.getTimestamp()).toNumber() + 3600,
-      });
+      contract = await initialiseToken();
       chainlinkContracts = await ChainlinkContractFactory.get();
 
       //Mint some tokens
