@@ -14,11 +14,11 @@ chai.use(solidity);
 describe("NFT Minting", () => {
   describe("when minting an NFT", () => {
     let contract: EstrellaNFT;
-    let owner: SignerWithAddress, investor: SignerWithAddress;
+    let investor: SignerWithAddress;
     let nftPrice: BigNumber;
 
     beforeEach(async () => {
-      [owner, investor] = await ethers.getSigners();
+      [, investor] = await ethers.getSigners();
       contract = await initialiseToken();
       nftPrice = await contract.NFT_PRICE();
     });
@@ -110,6 +110,13 @@ describe("NFT Minting", () => {
       await expect(contract.mint(investor.address, 1001)).to.be.revertedWith(
         "Cannot mint more than 1000 tokens in one transaction"
       );
+    });
+
+    it("then the last minted date is set", async () => {
+      const lastMintedBefore = await contract.lastMinted();
+      await contract.mint(investor.address, 1);
+
+      expect(await contract.lastMinted()).to.be.gt(lastMintedBefore);
     });
   });
 

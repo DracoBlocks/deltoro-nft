@@ -15,8 +15,11 @@ contract EstrellaNFT is
 {
   using Strings for uint256;
   uint256 public lastTokenId;
+  uint256 public lastMinted;
 
   uint256 public constant NFT_PRICE = 10 * 10**18; //10 MATIC
+
+  event Reveal(uint256 tokenId, uint256 seed);
 
   mapping(uint256 => NFTProperties) public tokenProperties;
 
@@ -91,6 +94,11 @@ contract EstrellaNFT is
     }
   }
 
+  function _mint(address to, uint256 tokenId) internal override {
+    super._mint(to, tokenId);
+    lastMinted = block.timestamp;
+  }
+
   function _baseURI() internal view override returns (string memory) {
     return baseURI;
   }
@@ -123,5 +131,6 @@ contract EstrellaNFT is
   function reveal(uint256 tokenId, uint256 randomness) internal override {
     NFTProperties memory properties = super.getRandomNFTProperty(randomness);
     tokenProperties[tokenId] = properties;
+    emit Reveal(tokenId, randomness);
   }
 }
