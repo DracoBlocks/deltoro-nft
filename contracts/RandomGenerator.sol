@@ -4,14 +4,13 @@ pragma solidity ^0.8.4;
 
 import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 import "./chainlink/IVRFCoordinatorServiceAgreements.sol";
-import "./EstrellaNFT.sol";
 
 abstract contract RandomGenerator is VRFConsumerBase {
   bytes32 public immutable keyHash;
   uint256 public immutable fee;
 
-  mapping(bytes32 => uint256) requestIdToTokenId;
-  bytes32 giveawayRequestId;
+  mapping(bytes32 => uint256) private requestIdToTokenId;
+  bytes32 private giveawayRequestId;
 
   constructor(
     address _vrfCoordinator,

@@ -7,6 +7,8 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 contract VRFCoordinatorMock {
   LinkTokenInterface public LINK;
 
+  uint256 public lastRequestId;
+
   struct ServiceAgreement {
     // Tracks oracle commitments to VRF service
     address vRFOracle; // Oracle committing to respond with VRF service

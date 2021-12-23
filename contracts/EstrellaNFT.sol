@@ -4,27 +4,21 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "./RandomGenerator.sol";
 import "./NFTDistribution.sol";
 
-contract EstrellaNFT is
-  RandomGenerator,
-  NFTDistribution,
-  ERC721URIStorage,
-  Ownable
-{
+contract EstrellaNFT is RandomGenerator, NFTDistribution, ERC721, Ownable {
   using Strings for uint256;
   uint256 public lastTokenId;
 
   uint256 public constant NFT_PRICE = 10 * 10**18; //10 MATIC
 
-  mapping(uint256 => NFTProperties) private tokenProperties;
+  mapping(uint256 => NFTProperties) public tokenProperties;
 
   uint256 public immutable saleFinishTime;
   bool public nftSaleFinished;
 
-  string private baseURI;
+  string public baseURI;
 
   constructor(
     uint256 _saleFinishTime,
@@ -79,7 +73,6 @@ contract EstrellaNFT is
       msg.value >= amount * NFT_PRICE || _msgSender() == owner(),
       "Not enough MATIC sent to purchase the NFTs"
     );
-    require(~uint256(0) - amount > lastTokenId, "NFT minting limit reached");
 
     for (uint256 i = 0; i < amount; i++) {
       uint256 newItemId = ++lastTokenId;
@@ -93,22 +86,42 @@ contract EstrellaNFT is
     return baseURI;
   }
 
+  function tokenURI(uint256 tokenId)
+    public
+    view
+    virtual
+    override
+    returns (string memory)
+  {
+    require(_exists(tokenId), "EstrellaNFT: URI query for nonexistent token");
+
+    NFTProperties memory properties = tokenProperties[tokenId];
+    string memory _tokenURI = string(
+      abi.encodePacked(
+        properties.color1,
+        "-",
+        properties.color2,
+        "-",
+        properties.color3,
+        ".png"
+      )
+    );
+    string memory base = _baseURI();
+
+    // If there is no base URI, return the token URI.
+    if (bytes(base).length == 0) {
+      return _tokenURI;
+    }
+    // If both are set, concatenate the baseURI and tokenURI (via abi.encodePacked).
+    if (bytes(_tokenURI).length > 0) {
+      return string(abi.encodePacked(base, _tokenURI));
+    }
+
+    return super.tokenURI(tokenId);
+  }
+
   function reveal(uint256 tokenId, uint256 randomness) internal override {
     NFTProperties memory properties = super.getRandomNFTProperty(randomness);
     tokenProperties[tokenId] = properties;
-
-    _setTokenURI(
-      tokenId,
-      string(
-        abi.encodePacked(
-          properties.color1,
-          "-",
-          properties.color2,
-          "-",
-          properties.color3,
-          ".png"
-        )
-      )
-    );
   }
 }
