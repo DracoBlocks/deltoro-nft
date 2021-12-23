@@ -11,7 +11,7 @@ struct NFTProperties {
 
 abstract contract NFTDistribution {
   NFTProperties[] private distribution;
-  uint256 private constant MAX_ENTRIES = 1; //1000; //The sum of all rarities
+  uint256 private constant MAX_ENTRIES = 1000; //The sum of all rarities
 
   NFTProperties public ORIGINAL = NFTProperties("oro", "plata", "bronce", 0);
 
