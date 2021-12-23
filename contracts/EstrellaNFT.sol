@@ -53,10 +53,11 @@ contract EstrellaNFT is RandomGenerator, NFTDistribution, ERC721, Ownable {
   }
 
   function originalGiveaway(uint256 randomness) internal override {
-    uint256 winningToken = (randomness % lastTokenId) + 1;
+    //We exclude the contract itself from ever winning the original NFT
+    uint256 winningToken = (randomness % (lastTokenId - 1)) + 2;
 
     //Transfer original NFT (id = 1)
-    transferFrom(address(this), ownerOf(winningToken), 1);
+    _transfer(address(this), ownerOf(winningToken), 1);
   }
 
   function hasNFTSaleFinished() private returns (bool) {

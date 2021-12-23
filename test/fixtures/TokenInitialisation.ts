@@ -3,9 +3,13 @@ import { EstrellaNFT, EstrellaNFT__factory } from "../../typechain";
 import { ChainlinkContractFactory } from "./chainlink/ChainlinkContracts";
 import config from "../../src/config";
 
-interface Options {}
+interface Options {
+  nftSaleFinish?: number;
+}
 
-const DEFAULT_OPTIONS: Options = {};
+const DEFAULT_OPTIONS: Options = {
+  nftSaleFinish: config.nftSaleFinish,
+};
 
 function getAddresses() {
   return ethers.getSigners();
@@ -20,7 +24,7 @@ async function initialiseToken(options?: Options): Promise<EstrellaNFT> {
 
   const [owner] = await getAddresses();
   const token = await new EstrellaNFT__factory(owner).deploy(
-    config.nftSaleFinish,
+    options.nftSaleFinish!,
     config.nftBaseUri,
     vrfCoordinatorAddress,
     linkAddress,

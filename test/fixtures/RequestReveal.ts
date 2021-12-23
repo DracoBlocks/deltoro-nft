@@ -14,14 +14,18 @@ const getRequestId = async (contract: EstrellaNFT, requestNumber?: number) => {
   );
 };
 
-const processReveal = async (contract: EstrellaNFT, requestNumber?: number) => {
+const processReveal = async (
+  contract: EstrellaNFT,
+  requestNumber?: number,
+  randomNumber?: number
+) => {
   const requestId = await getRequestId(contract, requestNumber);
 
   await (
     await ChainlinkContractFactory.get()
   ).vrfCoordinator.callBackWithRandomness(
     requestId,
-    Math.floor(Math.random() * 1000),
+    randomNumber ?? Math.floor(Math.random() * 1000),
     contract.address
   );
 };

@@ -3,15 +3,14 @@ import chai, { expect } from "chai";
 import { solidity } from "ethereum-waffle";
 import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
-import config from "../../src/config";
-import { EstrellaNFT, RequestIDProducer__factory } from "../../typechain";
+import { EstrellaNFT } from "../../typechain";
 import { advanceToFuture } from "../fixtures/BlockchainUtils";
 import {
   ChainlinkContractFactory,
   ChainlinkContracts,
 } from "../fixtures/chainlink/ChainlinkContracts";
 import { processReveal } from "../fixtures/RequestReveal";
-import { getAddresses, initialiseToken } from "../fixtures/TokenInitialisation";
+import { initialiseToken } from "../fixtures/TokenInitialisation";
 
 chai.use(solidity);
 
