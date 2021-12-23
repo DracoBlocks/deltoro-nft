@@ -6,10 +6,10 @@
     "build": "hardhat clean && hardhat compile",
     "clean": "hardhat clean",
     "test": "hardhat compile && hardhat test",
-    "slowTest": "env MOCHA_SLOW_TEST=true npm test",
+    "slowTest": "env MOCHA_SLOW_TEST=true yarn test",
     "format": "prettier -w test/ src/ contracts/",
-    "deploy-testnet": "npm run build && hardhat run --network testnet src/deploy.ts",
-    "deploy-mainnet": "npm run build && hardhat run --network mainnet src/deploy.ts"
+    "deploy-testnet": "yarn build && hardhat run --network testnet src/deploy.ts",
+    "deploy-mainnet": "yarn build && hardhat run --network mainnet src/deploy.ts"
   },
   "repository": {
     "type": "git",
@@ -32,8 +32,6 @@
     "@typechain/hardhat": "^2.3.1",
     "@types/mocha": "^8.2.3",
     "@types/node": "^15.14.9",
-    "@uniswap/v2-core": "^1.0.1",
-    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "chai": "^4.3.4",
     "ethereum-waffle": "^3.4.0",
     "ethereumjs-util": "^7.1.3",

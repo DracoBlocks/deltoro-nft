@@ -13,12 +13,13 @@ For secret management, a template of what this file should look like is availabl
 ### Requirements
 
 - Node
+- Yarn
 
 ### Testing the contracts
 
 #### Test suite: unit and integration tests
 
-You can run the tests with `npm test`.
+You can run the tests with `yarn test`.
 
 All the tests are stored in the [test](test) folder, separated between [unit tests](test/unit) that interact with the contract directly and [integration tests](test/integration) that interact with more than one contract as a requirement.
 
@@ -26,7 +27,7 @@ All the tests are stored in the [test](test) folder, separated between [unit tes
 
 Slow tests are naturally skipped. A slow test is described by using the `slowDescribe` method instead of Mocha's typical describe.
 
-In order to run all tests including slow tests, use `npm run slowTest`.
+In order to run all tests including slow tests, use `yarn slowTest`.
 
 ### Deploying a smart contract
 
