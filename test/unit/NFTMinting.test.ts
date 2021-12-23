@@ -3,7 +3,7 @@ import chai, { expect } from "chai";
 import { solidity } from "ethereum-waffle";
 import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
-import { EstrellaNFT } from "../../typechain";
+import { PalmaNFT } from "../../typechain";
 import { advanceToFuture } from "../fixtures/BlockchainUtils";
 import { processReveal } from "../fixtures/RequestReveal";
 import { initialiseToken } from "../fixtures/TokenInitialisation";
@@ -13,7 +13,7 @@ chai.use(solidity);
 
 describe("NFT Minting", () => {
   describe("when minting an NFT", () => {
-    let contract: EstrellaNFT;
+    let contract: PalmaNFT;
     let investor: SignerWithAddress;
     let nftPrice: BigNumber;
 
@@ -121,7 +121,7 @@ describe("NFT Minting", () => {
   });
 
   slowDescribe("when minting an NFT to absurd limits", () => {
-    let contract: EstrellaNFT;
+    let contract: PalmaNFT;
     let owner: SignerWithAddress, investor: SignerWithAddress;
     let nftPrice: BigNumber;
 

@@ -1,8 +1,8 @@
-import { EstrellaNFT, RequestIDProducer__factory } from "../../typechain";
+import { PalmaNFT, RequestIDProducer__factory } from "../../typechain";
 import { ChainlinkContractFactory } from "./chainlink/ChainlinkContracts";
 import { getAddresses } from "./TokenInitialisation";
 
-const getRequestId = async (contract: EstrellaNFT, requestNumber?: number) => {
+const getRequestId = async (contract: PalmaNFT, requestNumber?: number) => {
   const [owner] = await getAddresses();
   const requestIdProducer = await new RequestIDProducer__factory(
     owner
@@ -15,7 +15,7 @@ const getRequestId = async (contract: EstrellaNFT, requestNumber?: number) => {
 };
 
 const processReveal = async (
-  contract: EstrellaNFT,
+  contract: PalmaNFT,
   requestNumber?: number,
   randomNumber?: number
 ) => {

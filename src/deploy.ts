@@ -1,6 +1,6 @@
 import hre, { ethers } from "hardhat";
 import { exit } from "process";
-import { EstrellaNFT__factory } from "../typechain";
+import { PalmaNFT__factory } from "../typechain";
 import config from "./config";
 import setupLocal from "./local/setup";
 
@@ -14,20 +14,19 @@ async function main() {
     deploymentConfig = { ...config, ...localConfig };
   }
 
-  const { nftSaleFinish, nftBaseUri, vrfCoordinator, linkToken, keyHash } =
+  const { nftSaleFinish, vrfCoordinator, linkToken, keyHash } =
     deploymentConfig;
 
-  const contract = await new EstrellaNFT__factory(owner).deploy(
+  const contract = await new PalmaNFT__factory(owner).deploy(
     nftSaleFinish,
-    nftBaseUri,
     vrfCoordinator,
     linkToken,
     keyHash
   );
   console.log("Contract deployed to:", contract.address);
 
-  // await verifyContract(contract.address);
-  // console.log("Contract verified in bscscan");
+  await verifyContract(contract.address);
+  console.log("Contract verified in blockchain explorer");
 }
 
 async function verifyContract(address: string) {

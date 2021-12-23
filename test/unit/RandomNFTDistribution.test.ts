@@ -2,7 +2,7 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import chai, { expect } from "chai";
 import { solidity } from "ethereum-waffle";
 import { ethers } from "hardhat";
-import { EstrellaNFT } from "../../typechain";
+import { PalmaNFT } from "../../typechain";
 import {
   ChainlinkContractFactory,
   ChainlinkContracts,
@@ -12,7 +12,7 @@ chai.use(solidity);
 
 describe("NFT random distribution (reveal)", () => {
   describe("when requesting an NFT property", () => {
-    let contract: EstrellaNFT;
+    let contract: PalmaNFT;
     let owner: SignerWithAddress;
     let chainlinkContracts: ChainlinkContracts;
 

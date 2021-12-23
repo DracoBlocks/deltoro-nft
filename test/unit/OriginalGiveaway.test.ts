@@ -3,7 +3,7 @@ import chai, { expect } from "chai";
 import { solidity } from "ethereum-waffle";
 import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
-import { EstrellaNFT, TimeUtils, TimeUtils__factory } from "../../typechain";
+import { PalmaNFT, TimeUtils, TimeUtils__factory } from "../../typechain";
 import { address } from "../fixtures/AddressUtils";
 import {
   advanceToFuture,
@@ -20,7 +20,7 @@ chai.use(solidity);
 
 describe("Original giveaway", () => {
   describe("when we are giving away the original piece", () => {
-    let contract: EstrellaNFT;
+    let contract: PalmaNFT;
     let owner: SignerWithAddress, investor: SignerWithAddress;
     let chainlinkContracts: ChainlinkContracts;
     let timeUtils: TimeUtils;

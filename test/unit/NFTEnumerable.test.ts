@@ -2,13 +2,13 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import chai, { expect } from "chai";
 import { solidity } from "ethereum-waffle";
 import { ethers } from "hardhat";
-import { EstrellaNFT } from "../../typechain";
+import { PalmaNFT } from "../../typechain";
 import { initialiseToken } from "../fixtures/TokenInitialisation";
 chai.use(solidity);
 
 describe("NFTs are enumerable", () => {
   describe("when minting NFTs", () => {
-    let contract: EstrellaNFT;
+    let contract: PalmaNFT;
     let owner: SignerWithAddress;
     let investor: SignerWithAddress;
 

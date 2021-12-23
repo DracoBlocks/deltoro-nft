@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import {
-  EstrellaNFT,
-  EstrellaNFT__factory,
+  PalmaNFT,
+  PalmaNFT__factory,
   TimeUtils__factory,
 } from "../../typechain";
 import { ChainlinkContractFactory } from "./chainlink/ChainlinkContracts";
@@ -19,7 +19,7 @@ function getAddresses() {
   return ethers.getSigners();
 }
 
-async function initialiseToken(options?: Options): Promise<EstrellaNFT> {
+async function initialiseToken(options?: Options): Promise<PalmaNFT> {
   options = { ...DEFAULT_OPTIONS, ...options };
 
   const [owner] = await getAddresses();
@@ -28,7 +28,7 @@ async function initialiseToken(options?: Options): Promise<EstrellaNFT> {
   const linkAddress = chainlinkContracts.LINK.address;
   const vrfCoordinatorAddress = chainlinkContracts.vrfCoordinator.address;
 
-  const token = await new EstrellaNFT__factory(owner).deploy(
+  const token = await new PalmaNFT__factory(owner).deploy(
     options.setFinishInTheFuture
       ? (await timeUtils.getTimestamp()).toNumber() + 3600
       : config.nftSaleFinish,

@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./RandomGenerator.sol";
 import "./NFTDistribution.sol";
 
-contract EstrellaNFT is
+contract PalmaNFT is
   RandomGenerator,
   NFTDistribution,
   ERC721Enumerable,
@@ -110,7 +110,7 @@ contract EstrellaNFT is
     override
     returns (string memory)
   {
-    require(_exists(tokenId), "EstrellaNFT: URI query for nonexistent token");
+    require(_exists(tokenId), "PalmaNFT: URI query for nonexistent token");
 
     NFTProperties memory properties = tokenProperties[tokenId];
     string memory _tokenURI = properties.cid;

@@ -39,7 +39,7 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: secrets.verification.bscscanApiKey,
+    apiKey: secrets.verification.scanApiKey,
   },
   solidity: {
     compilers: [
