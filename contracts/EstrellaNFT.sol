@@ -30,10 +30,10 @@ contract EstrellaNFT is
 
   constructor(
     uint256 _saleFinishTime,
+    string memory nftBaseURI,
     address vrfCoordinator,
     address linkToken,
-    bytes32 keyHash,
-    string memory nftBaseURI
+    bytes32 keyHash
   )
     ERC721("Estrella", "STAR")
     RandomGenerator(vrfCoordinator, linkToken, keyHash)

@@ -1,0 +1,7 @@
+{
+    "nftBaseUri": "http://localhost:3000/nft/",
+    "nftSaleFinish": 1641599999, 
+    "linkToken": "",
+    "vrfCoordinator": "",
+    "keyHash": ""
+}

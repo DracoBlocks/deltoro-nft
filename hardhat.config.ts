@@ -25,7 +25,7 @@ const config: HardhatUserConfig = {
     ganache: {
       url: "HTTP://127.0.0.1:8545",
       chainId: 1337,
-      accounts: [],
+      accounts: accounts,
     },
     testnet: {
       url: "https://rpc-mumbai.maticvigil.com/",
@@ -45,24 +45,6 @@ const config: HardhatUserConfig = {
     compilers: [
       {
         version: "0.8.4",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200,
-          },
-        },
-      },
-      {
-        version: "0.6.6",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200,
-          },
-        },
-      },
-      {
-        version: "0.5.16",
         settings: {
           optimizer: {
             enabled: true,
