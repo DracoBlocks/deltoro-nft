@@ -20,7 +20,7 @@ abstract contract NFTDistribution {
       "plata",
       "bronce",
       0,
-      "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+      "QmU8JVpvGMcN7ZrEj4uU9WYrmxCHAa3ctz1mrAaLnwWvXC"
     );
 
   constructor() {
@@ -30,7 +30,7 @@ abstract contract NFTDistribution {
         "rojo",
         "azul",
         1,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmPxka31kiu38jVnyM24JLANVeHuzNW3TJTe5suDJjYLfD"
       )
     );
     distribution.push(
@@ -39,7 +39,7 @@ abstract contract NFTDistribution {
         "plata",
         "negro",
         2,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmcmwF9hMPYKaDq8MG2jckxpBpzB78cH5kUv4fFRy165W5"
       )
     );
     distribution.push(
@@ -48,7 +48,7 @@ abstract contract NFTDistribution {
         "plata",
         "morado",
         2,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmYunEydWCkRwoUmF8YUxDAdW9hmiGAR22q9qGDGRbpKRH"
       )
     );
     distribution.push(
@@ -57,7 +57,7 @@ abstract contract NFTDistribution {
         "azul",
         "bronce",
         5,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmXyLzwPB3gb3Aizce74NmLBfvzSNkxmXBufEmCuJ9vgRM"
       )
     );
     distribution.push(
@@ -66,7 +66,7 @@ abstract contract NFTDistribution {
         "verde",
         "bronce",
         5,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmVFBrxEWwbmEQdbYCGwfyDw4MFNmYyB2c4YEom7UisM2n"
       )
     );
     distribution.push(
@@ -75,7 +75,7 @@ abstract contract NFTDistribution {
         "blanco",
         "bronce",
         5,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "Qmcad8dWoaXBVVDhtcZS4o255V9BaUH9bPC74JBTFddQnU"
       )
     );
     distribution.push(
@@ -84,7 +84,7 @@ abstract contract NFTDistribution {
         "verde",
         "morado",
         10,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmcUQS4rtmw9MCNBVeL6MAFsCgUsLed8fmzFNV2w9ujaAv"
       )
     );
     distribution.push(
@@ -93,7 +93,7 @@ abstract contract NFTDistribution {
         "rojo",
         "azul",
         10,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmeewojztUpPy192VKpYDuEnZAWeeWmDtMrN9GqDBmZQEi"
       )
     );
     distribution.push(
@@ -102,7 +102,7 @@ abstract contract NFTDistribution {
         "rojo",
         "verde",
         10,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmPF5thTxPJuTF6sMqnfQKfr4KwCDGJbYrq2uqzJBDq8ao"
       )
     );
     distribution.push(
@@ -111,7 +111,7 @@ abstract contract NFTDistribution {
         "verde",
         "rojo",
         13,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmU33z4Dp5fpfKnEuRs5XDpiAwXEQyz2oWG3aWrjczKakH"
       )
     );
     distribution.push(
@@ -120,7 +120,7 @@ abstract contract NFTDistribution {
         "morado",
         "azul",
         15,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmaMHEW2tJPJBNTC1cmLGKXfPYuBwAHfEarY6KbpHVrUKt"
       )
     );
     distribution.push(
@@ -129,7 +129,7 @@ abstract contract NFTDistribution {
         "verde",
         "morado",
         15,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmWz71xaVEkWkbGbUEL1AP7Vqg2VLMEBLYxtgHQFUDRSyU"
       )
     );
     distribution.push(
@@ -138,7 +138,7 @@ abstract contract NFTDistribution {
         "blanco",
         "rojo",
         20,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmQ3My8qzy19DPg7zKvBaCc92QPFYrfTq29KG6qV55odHe"
       )
     );
     distribution.push(
@@ -147,7 +147,7 @@ abstract contract NFTDistribution {
         "azul",
         "blanco",
         40,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmXh5sq7FMeYwtBrPss6uszdRzYtuBBQzB75zHGL9mRK7f"
       )
     );
     distribution.push(
@@ -156,7 +156,7 @@ abstract contract NFTDistribution {
         "azul",
         "negro",
         40,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmSYE6zJ8NJ7riWKQbhKgJiyi7DXQZ1MgZMwschPuryZd6"
       )
     );
     distribution.push(
@@ -165,7 +165,7 @@ abstract contract NFTDistribution {
         "blanco",
         "negro",
         45,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmcqyynERHRGNNEjGBVXhxxZgQvzL3ygWKMvtjX7M5d4vJ"
       )
     );
     distribution.push(
@@ -174,7 +174,7 @@ abstract contract NFTDistribution {
         "verde",
         "blanco",
         50,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmUUPtjExJj1fm5zD4f6jJEbciQKJwT7MAG8THdfT9qHzf"
       )
     );
     distribution.push(
@@ -183,7 +183,7 @@ abstract contract NFTDistribution {
         "morado",
         "verde",
         100,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmSFaNGjDnPjHHeTNASLuFLM4sUoQH9WBDnUysEvy476Gu"
       )
     );
     distribution.push(
@@ -192,7 +192,7 @@ abstract contract NFTDistribution {
         "blanco",
         "negro",
         100,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmT7GRnPG2dp3ZqAJFbrUibciDNNB6zw6ULHocKJ6WuERA"
       )
     );
     distribution.push(
@@ -201,7 +201,7 @@ abstract contract NFTDistribution {
         "negro",
         "blanco",
         120,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmbneDYEpMTQg6XmhD4aWjEzB7HDd98ZMuXD9LR2uLUuSW"
       )
     );
     distribution.push(
@@ -210,7 +210,7 @@ abstract contract NFTDistribution {
         "morado",
         "blanco",
         120,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmUH5NPYH7ohti8uLdgvn82yg5Ekn4ywjUZLxi5huHBodm"
       )
     );
     distribution.push(
@@ -219,7 +219,7 @@ abstract contract NFTDistribution {
         "blanco",
         "negro",
         132,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmPySBHJ9XHLLEZKAbQ8pUcAvyqxEXy7hY1mRdGuzgV9LQ"
       )
     );
     distribution.push(
@@ -228,7 +228,7 @@ abstract contract NFTDistribution {
         "negro",
         "morado",
         140,
-        "Qmbg3XoY8sFDPtaDuhU4BS7DxR1pwv7cxDnaUF598wmTdh"
+        "QmYQSHZLZuTYQU5DKvv6TKYs6YSDBKN9rCjmYN3eVw8eVZ"
       )
     );
   }
