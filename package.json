@@ -9,7 +9,8 @@
     "slowTest": "env MOCHA_SLOW_TEST=true yarn test",
     "format": "prettier -w test/ src/ contracts/",
     "deploy-testnet": "yarn build && hardhat run --network testnet src/deploy.ts",
-    "deploy-mainnet": "yarn build && hardhat run --network mainnet src/deploy.ts"
+    "deploy-mainnet": "yarn build && hardhat run --network mainnet src/deploy.ts",
+    "deploy-ganache": "yarn build && hardhat run --network ganache src/deploy.ts"
   },
   "repository": {
     "type": "git",

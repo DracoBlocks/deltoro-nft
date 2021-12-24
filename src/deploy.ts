@@ -17,21 +17,32 @@ async function main() {
   const { nftSaleFinish, vrfCoordinator, linkToken, keyHash } =
     deploymentConfig;
 
-  const contract = await new PalmaNFT__factory(owner).deploy(
-    nftSaleFinish,
-    vrfCoordinator,
-    linkToken,
-    keyHash
-  );
+  const contract = await (
+    await new PalmaNFT__factory(owner).deploy(
+      nftSaleFinish,
+      vrfCoordinator,
+      linkToken,
+      keyHash
+    )
+  ).deployed();
   console.log("Contract deployed to:", contract.address);
 
-  await verifyContract(contract.address);
-  console.log("Contract verified in blockchain explorer");
+  if (network != "hardhat" && network != "ganache") {
+    await verifyContract(
+      contract.address,
+      nftSaleFinish,
+      vrfCoordinator,
+      linkToken,
+      keyHash
+    );
+    console.log("Contract verified in blockchain explorer");
+  }
 }
 
-async function verifyContract(address: string) {
+async function verifyContract(address: string, ...args: any) {
   return hre.run("verify:verify", {
     address: address,
+    constructorArguments: args,
   });
 }
 

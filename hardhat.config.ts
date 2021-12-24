@@ -26,6 +26,7 @@ const config: HardhatUserConfig = {
       url: "HTTP://127.0.0.1:8545",
       chainId: 1337,
       accounts: accounts,
+      blockGasLimit: 60000000,
     },
     testnet: {
       url: "https://rpc-mumbai.maticvigil.com/",
