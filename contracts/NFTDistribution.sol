@@ -233,6 +233,24 @@ abstract contract NFTDistribution {
     );
   }
 
+  function getRarityLevel(uint256 rarity)
+    external
+    pure
+    returns (string memory)
+  {
+    if (rarity >= 100) {
+      return "Common";
+    } else if (rarity >= 40) {
+      return "Rare";
+    } else if (rarity >= 10) {
+      return "Epic";
+    } else if (rarity >= 1) {
+      return "Legendary";
+    } else {
+      return "Original";
+    }
+  }
+
   function getRandomNFTProperty(uint256 randomness)
     public
     view
