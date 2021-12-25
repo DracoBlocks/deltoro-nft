@@ -30,6 +30,7 @@ contract PalmaNFT is
 
   constructor(
     uint256 _saleFinishTime,
+    string memory ipfsMetadataFolderCid,
     address vrfCoordinator,
     address linkToken,
     bytes32 keyHash
@@ -38,7 +39,7 @@ contract PalmaNFT is
     RandomGenerator(vrfCoordinator, linkToken, keyHash)
   {
     saleFinishTime = _saleFinishTime;
-    baseURI = "ipfs://";
+    baseURI = string(abi.encodePacked("ipfs://", ipfsMetadataFolderCid, "/"));
 
     mintOriginalNFT();
   }
@@ -113,7 +114,16 @@ contract PalmaNFT is
     require(_exists(tokenId), "PalmaNFT: URI query for nonexistent token");
 
     NFTProperties memory properties = tokenProperties[tokenId];
-    string memory _tokenURI = properties.cid;
+    string memory _tokenURI = string(
+      abi.encodePacked(
+        properties.color1,
+        "-",
+        properties.color2,
+        "-",
+        properties.color3,
+        ".json"
+      )
+    );
     string memory base = _baseURI();
 
     // If there is no base URI, return the token URI.

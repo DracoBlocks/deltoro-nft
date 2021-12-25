@@ -85,7 +85,14 @@ describe("NFT Minting", () => {
       );
 
       const tokenURI = await contract.tokenURI(await contract.lastTokenId());
-      const expectedURI = (await contract.baseURI()) + tokenProperties["cid"];
+      const expectedURI =
+        (await contract.baseURI()) +
+        tokenProperties["color1"] +
+        "-" +
+        tokenProperties["color2"] +
+        "-" +
+        tokenProperties["color3"] +
+        ".json";
 
       expect(tokenProperties["color1"]).to.not.be.empty;
       expect(tokenProperties["color2"]).to.not.be.empty;
