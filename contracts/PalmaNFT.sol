@@ -4,6 +4,7 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "./RandomGenerator.sol";
 import "./NFTDistribution.sol";
 
@@ -98,6 +99,14 @@ contract PalmaNFT is
   function _mint(address to, uint256 tokenId) internal override {
     super._mint(to, tokenId);
     lastMinted = block.timestamp;
+  }
+
+  function withdraw() external {
+    payable(owner()).transfer(address(this).balance);
+  }
+
+  function withdrawToken(address token) external {
+    IERC20(token).transfer(owner(), IERC20(token).balanceOf(address(this)));
   }
 
   function _baseURI() internal view override returns (string memory) {
