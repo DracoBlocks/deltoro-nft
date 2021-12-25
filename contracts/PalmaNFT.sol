@@ -36,7 +36,7 @@ contract PalmaNFT is
     address linkToken,
     bytes32 keyHash
   )
-    ERC721("Estrella sobre un volcan", "PALMA")
+    ERC721("Estrella sobre un volcan dormido", "PALMA")
     RandomGenerator(vrfCoordinator, linkToken, keyHash)
   {
     saleFinishTime = _saleFinishTime;
