@@ -21,6 +21,7 @@ contract PalmaNFT is
   uint256 public constant NFT_PRICE = 10 * 10**18; //10 MATIC
 
   event Reveal(uint256 tokenId, uint256 seed);
+  event PermanentURI(string _value, uint256 indexed _id);
 
   mapping(uint256 => NFTProperties) public tokenProperties;
 
@@ -150,6 +151,8 @@ contract PalmaNFT is
   function reveal(uint256 tokenId, uint256 randomness) internal override {
     NFTProperties memory properties = super.getRandomNFTProperty(randomness);
     tokenProperties[tokenId] = properties;
+
     emit Reveal(tokenId, randomness);
+    emit PermanentURI(tokenURI(tokenId), tokenId);
   }
 }
