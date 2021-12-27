@@ -76,7 +76,12 @@ const config: HardhatUserConfig = {
     // ethPrice: 345.85, //Get current BNB price from https://coinmarketcap.com/currencies/binance-coin/
     // gasPrice: 7, //Get current average for the month from https://explorer.bitquery.io/bsc/gas
     showTimeSpent: true,
-    excludeContracts: ["LinkToken", "VRFCoordinatorMock", "RequestIDProducer"],
+    excludeContracts: [
+      "LinkToken",
+      "VRFCoordinatorMock",
+      "RequestIDProducer",
+      "TimeUtils",
+    ],
     coinmarketcap: secrets.coinmarketcap.apiKey,
   },
 };

@@ -155,4 +155,44 @@ contract PalmaNFT is
     emit Reveal(tokenId, randomness);
     emit PermanentURI(tokenURI(tokenId), tokenId);
   }
+
+  struct PublicInfo {
+    uint256 lastTokenId;
+    uint256 lastMinted;
+    uint256 nftPrice;
+    uint256 saleFinishTime;
+    bool nftSaleFinished;
+    string baseURI;
+  }
+
+  //Returns all available public information in a single call
+  function getPublicInfo() external view returns (PublicInfo memory) {
+    return
+      PublicInfo(
+        lastTokenId,
+        lastMinted,
+        NFT_PRICE,
+        saleFinishTime,
+        nftSaleFinished,
+        baseURI
+      );
+  }
+
+  struct NFTProps {
+    uint256 id;
+    NFTProperties properties;
+  }
+
+  function getAllOwnedNFTs(address account)
+    external
+    view
+    returns (NFTProps[] memory result)
+  {
+    uint256 tokensOwned = balanceOf(account);
+    result = new NFTProps[](tokensOwned);
+    for (uint256 i; i < tokensOwned; i++) {
+      uint256 tokenId = tokenOfOwnerByIndex(account, i);
+      result[i] = NFTProps(tokenId, tokenProperties[tokenId]);
+    }
+  }
 }
