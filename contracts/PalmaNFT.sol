@@ -18,7 +18,7 @@ contract PalmaNFT is
   uint256 public lastTokenId;
   uint256 public lastMinted;
 
-  uint256 public constant NFT_PRICE = 10 * 10**18; //10 MATIC
+  uint256 public constant NFT_PRICE = 10 * 10**18;
 
   event Reveal(uint256 tokenId, uint256 seed);
   event PermanentURI(string _value, uint256 indexed _id);
@@ -180,6 +180,7 @@ contract PalmaNFT is
 
   struct NFTProps {
     uint256 id;
+    string tokenURI;
     NFTProperties properties;
   }
 
@@ -192,7 +193,11 @@ contract PalmaNFT is
     result = new NFTProps[](tokensOwned);
     for (uint256 i; i < tokensOwned; i++) {
       uint256 tokenId = tokenOfOwnerByIndex(account, i);
-      result[i] = NFTProps(tokenId, tokenProperties[tokenId]);
+      result[i] = NFTProps(
+        tokenId,
+        tokenURI(tokenId),
+        tokenProperties[tokenId]
+      );
     }
   }
 }

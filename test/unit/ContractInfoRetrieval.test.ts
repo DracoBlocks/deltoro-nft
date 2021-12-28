@@ -54,11 +54,11 @@ describe("Contract Info Retrieval", () => {
         const element = allNFTs[i];
 
         const tokenId = element.id;
+        const tokenURI = element.tokenURI;
         const properties = element.properties;
 
-        const expected = await contract.tokenProperties(tokenId);
-
-        expect(properties).to.eql(expected);
+        expect(properties).to.eql(await contract.tokenProperties(tokenId));
+        expect(tokenURI).to.eq(await contract.tokenURI(tokenId));
       }
     });
   });
