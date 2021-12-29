@@ -17,6 +17,7 @@ contract PalmaNFT is
   using Strings for uint256;
   uint256 public lastTokenId;
   uint256 public lastMinted;
+  uint256 public tokensBurned;
 
   uint256 public constant NFT_PRICE = 10 * 10**18;
 
@@ -102,6 +103,16 @@ contract PalmaNFT is
     lastMinted = block.timestamp;
   }
 
+  function _burn(uint256 tokenId) internal virtual override {
+    super._burn(tokenId);
+    delete tokenProperties[tokenId];
+    tokensBurned++;
+  }
+
+  function burn(uint256 tokenId) external onlyOwner {
+    _burn(tokenId);
+  }
+
   function withdraw() external {
     payable(owner()).transfer(address(this).balance);
   }
@@ -159,6 +170,7 @@ contract PalmaNFT is
   struct PublicInfo {
     uint256 lastTokenId;
     uint256 lastMinted;
+    uint256 tokensBurned;
     uint256 nftPrice;
     uint256 saleFinishTime;
     bool nftSaleFinished;
@@ -171,6 +183,7 @@ contract PalmaNFT is
       PublicInfo(
         lastTokenId,
         lastMinted,
+        tokensBurned,
         NFT_PRICE,
         saleFinishTime,
         nftSaleFinished,

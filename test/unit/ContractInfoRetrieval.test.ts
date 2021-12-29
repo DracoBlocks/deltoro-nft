@@ -20,6 +20,7 @@ describe("Contract Info Retrieval", () => {
       const {
         lastTokenId,
         lastMinted,
+        tokensBurned,
         nftPrice,
         saleFinishTime,
         nftSaleFinished,
@@ -29,6 +30,7 @@ describe("Contract Info Retrieval", () => {
       expect({
         lastTokenId,
         lastMinted,
+        tokensBurned,
         nftPrice,
         saleFinishTime,
         nftSaleFinished,
@@ -36,6 +38,7 @@ describe("Contract Info Retrieval", () => {
       }).to.eql({
         lastTokenId: await contract.lastTokenId(),
         lastMinted: await contract.lastMinted(),
+        tokensBurned: await contract.tokensBurned(),
         nftPrice: await contract.NFT_PRICE(),
         saleFinishTime: await contract.saleFinishTime(),
         nftSaleFinished: await contract.nftSaleFinished(),
