@@ -19,7 +19,7 @@ contract PalmaNFT is
   uint256 public lastMinted;
   uint256 public tokensBurned;
 
-  uint256 public NFT_PRICE = 10 * 10**18;
+  uint256 public NFT_PRICE = 8 * 10**18;
 
   event Reveal(uint256 tokenId, uint256 seed);
   event PermanentURI(string _value, uint256 indexed _id);
